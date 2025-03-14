@@ -1,14 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-  <title>Game Link Processor</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/style.css">
-  </head>
-  <body>
-    <h1 id="header"></h1>
+<html>
+<head>
+    <title>Game Link Processor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Your Game Link</h1>
+        <form id="linkForm">
+            <input type="text" id="gameLink" placeholder="Paste your game link here" required>
+            <button type="submit">Get Your Digits</button>
+        </form>
+        <p id="result"></p>
+    </div>
 
-    <script src="src/script.js"></script>
-  </body>
+    <script>
+        document.getElementById('linkForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const gameLink = document.getElementById('gameLink').value;
+            const digits = processLink(gameLink);
+            document.getElementById('result').innerText = digits;
+        });
+
+        function processLink(link) {
+            const validPrefix = "https://studio.code.org/c/";
+            if (link.startsWith(validPrefix)) {
+                return "Your digits are: 89";
+            } else {
+                return "Umm, something is not right with your link.";
+            }
+        }
+    </script>
+</body>
 </html>
