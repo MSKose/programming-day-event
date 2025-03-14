@@ -66,8 +66,10 @@
         });
 
         function processLink(link) {
-            const validPrefix = "https://studio.code.org/c/";
-            if (link.startsWith(validPrefix)) {
+            const validPrefix = "studio.code.org/c/";
+            const validSubstring = "studio.code.org/congrats";
+            
+            if (link.includes(validPrefix) || link.includes(validSubstring)) {
                 return "Your digits are: 89";
             } else {
                 return "Umm, something is not right with your link.";
